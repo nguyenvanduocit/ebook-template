@@ -2,22 +2,31 @@ name: Release
 
 on:
   push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+    branches:
+      - master
 
 jobs:
-  build:
+  build-epub:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
 
-      - name: Setup dependencies
-        run: apk add make texlive-xetex ttf-dejavu
+      - name: Create directory
+        run: mkdir -p build
 
       - uses: docker://pandoc/latex:2.9
         with:
-          args: --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml  --verbose --wrap=none --epub-cover-image=images/cover.png -o build/epub/book.epub chapters/*.md
+          args: |>  # allows you to break string into multiple lines
+            --toc
+            --toc-depth=2
+            --webtex
+            --css=style.css
+            --metadata-file=metadata.yml
+            --verbose
+            --wrap=none
+            --epub-cover-image=images/cover.png
+            -o build/epub.epub
+            chapters/*.md
 
       - name: Create Release
         id: create_release
@@ -37,5 +46,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./build/epub/book.epub
-          asset_name: ebook.epub
+          asset_path: ./build/epub.epub
+          asset_name: epub.epub
