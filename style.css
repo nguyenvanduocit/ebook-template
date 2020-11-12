@@ -1,0 +1,200 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin-right: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /* font: inherit */
+    vertical-align: baseline;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@page {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    hyphens: none !important;
+    -moz-hyphens: none !important;
+    -webkit-hyphens: none !important;
+    adobe-hyphenate: none !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    text-indent: 0px;
+    text-align: left;
+
+}
+
+h1 {
+    font-size: 1.3em;
+}
+
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5 {
+    font-size: 1.1em;
+}
+
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+    text-indent: 0;
+}
+
+p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+    hyphenate-after: 3;
+    hyphenate-before: 3;
+    hyphenate-lines: 2;
+    -webkit-hyphenate-after: 3;
+    -webkit-hyphenate-before: 3;
+    -webkit-hyphenate-lines: 2;
+    line-height: 1.35em;
+    margin: 0;
+    text-indent: 1em;
+    orphans: 2;
+    widows: 2;
+    margin-bottom: 1em;
+}
+
+/* lists */
+ul, ol, dl {
+    margin: 1em 0 1em 0;
+    text-align: left;
+}
+
+li {
+
+    line-height: 1.5em;
+    orphans: 2;
+    widows: 2;
+    text-indent: 0;
+    margin: 0;
+}
+
+li p {
+    text-indent: 0em;
+}
+
+dt {
+    font-weight: bold;
+
+}
+
+dd {
+    line-height: 1.5em;
+
+}
+
+dd p {
+    /* Fix paragraph indenting inside of definition lists */
+    text-indent: 0em;
+}
+
+blockquote {
+    margin-left: 1em;
+    margin-right: 1em;
+    line-height: 1.5em;
+    font-style: italic;
+}
+
+blockquote p.first-para, blockquote p {
+    text-indent: 0;
+}
+
+pre, tt, code, samp, kbd {
+    word-wrap: break-word;
+}
+
+pre {
+    font-size: 0.9em;
+    line-height: 1.2em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    white-space: pre-wrap;
+    display: block;
+}
+
+p pre {
+    font-size: 1em;
+}
+
+img {
+    border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 1px 4px;
+    box-sizing: border-box;
+    border: white 0.5em solid;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+p img {
+    border-radius: 0;
+    border: none;
+}
+
+figure {
+    /* These first 3 should center figures */
+    padding: 1em;
+    background-color: #cccccc;
+    border: 1px solid black;
+    text-align: center;
+}
+
+figure figcaption {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Tables */
+table {
+    /*width: 100% */
+    page-break-inside: avoid;
+    border: 1px;
+    /* centers on kf8 */
+    margin: 1em auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    font-variant: small-caps;
+    padding: 5px !important;
+    vertical-align: baseline;
+    border-bottom: 1px solid black;
+}
+
+td {
+
+    font-size: small;
+    hyphens: none;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    padding: 5px !important;
+    page-break-inside: avoid;
+    text-align: left;
+    text-indent: 0;
+    vertical-align: baseline;
+}
+
+td:nth-last-child {
+    border-bottom: 1px solid black;
+}
