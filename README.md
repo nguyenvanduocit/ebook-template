@@ -98,6 +98,10 @@ pandoc --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml
 
 The generated file will be placed in *build/epub.epub*.
 
+## Release
+
+Make a tag to release your book.
+
 #### Extra configuration
 
 If you want to configure the output, you'll probably have to look the
