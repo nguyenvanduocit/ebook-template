@@ -15,7 +15,8 @@ jobs:
       - name: Create directory
         run: |
           mkdir -p build
-          echo "FILELIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+          echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+          echo "OUTPUT_NAME=ebook-${{ github.ref }}.epub" >> $GITHUB_ENV
       - uses: docker://pandoc/latex:latest
         with:
           args: >-  # allows you to break string into multiple lines
@@ -27,8 +28,8 @@ jobs:
             --verbose
             --wrap=none
             --epub-cover-image=images/cover.png
-            -o build/epub.epub
-            ${{ env.FILELIST }}
+            -o build/${{ env.OUTPUT_NAME }}
+            ${{ env.FILE_LIST }}
 
       - name: Create Release
         id: create_release
@@ -48,6 +49,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./build/epub.epub
-          asset_name: epub.epub
+          asset_path: ./build/${{ env.OUTPUT_NAME }}
+          asset_name: ${{ env.OUTPUT_NAME }}
           asset_content_type: application/epub+zip
