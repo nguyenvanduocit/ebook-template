@@ -7,31 +7,13 @@
 ## Description
 
 This repository contains a simple template for building [Pandoc](http://pandoc.org/) documents;
-Pandoc is a suite of tools to compile markdown files into readable files (PDF, EPUB, HTML...).
+Pandoc is a suite of tools to compile markdown files into EPUB file.
 
 ## Usage
 
 ### Installing
 
-Please, check [this page](http://pandoc.org/installing.html) for more information. On ubuntu, it
-can be installed as the *pandoc* package:
-
-```sh
-sudo apt-get install pandoc
-```
-
-This template uses [make](https://www.gnu.org/software/make/) to build the output files, so don't
-forget to install it too:
-
-```sh
-sudo apt-get install make
-```
-
-To export to PDF files, make sure to install the following packages:
-
-```sh
-sudo apt-get install texlive-fonts-recommended texlive-xetex
-```
+Please, check [this page](http://pandoc.org/installing.html) for more information.
 
 ### Folder structure
 
@@ -43,8 +25,8 @@ my-book/         # Root directory.
 |- chapters/     # Markdowns files; one for each chapter.
 |- images/       # Images folder.
 |  |- cover.png  # Cover page for epub.
+|- style.css     # Css file
 |- metadata.yml  # Metadata content (title, author...).
-|- Makefile      # Makefile used for building our books.
 ```
 
 ### Setup generic data
@@ -111,10 +93,10 @@ Use this command:
 
 ```sh
 mkdir -p build
-pandoc --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml  --verbose --wrap=none --epub-cover-image=images/cover.png -o build/epub.epub chapters/*.md
+pandoc --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml  --verbose --wrap=none --epub-cover-image=images/cover.png -o build/epub.epub $(printf '"%s" ' chapters/*.md)
 ```
 
-The generated file will be placed in *build/epub*.
+The generated file will be placed in *build/epub.epub*.
 
 #### Extra configuration
 

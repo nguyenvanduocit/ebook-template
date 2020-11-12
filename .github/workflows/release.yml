@@ -2,8 +2,9 @@ name: Release
 
 on:
   push:
-    branches:
-      - master
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
 
 jobs:
   build-epub:
@@ -12,11 +13,12 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Create directory
-        run: mkdir -p build
-
-      - uses: docker://pandoc/latex:2.9
+        run: |
+          mkdir -p build
+          echo "FILELIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+      - uses: docker://pandoc/latex:latest
         with:
-          args: |>  # allows you to break string into multiple lines
+          args: >-  # allows you to break string into multiple lines
             --toc
             --toc-depth=2
             --webtex
@@ -26,7 +28,7 @@ jobs:
             --wrap=none
             --epub-cover-image=images/cover.png
             -o build/epub.epub
-            chapters/*.md
+            ${{ env.FILELIST }}
 
       - name: Create Release
         id: create_release
@@ -48,3 +50,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ./build/epub.epub
           asset_name: epub.epub
+          asset_content_type: application/epub+zip
