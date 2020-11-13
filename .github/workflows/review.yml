@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-      - name: Setup Environment directory
+
+      - name: Setup Environment
         run: echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+
       - uses: docker://pandoc/latex:latest
         with:
           args: >-
@@ -23,17 +25,9 @@ jobs:
             --epub-cover-image=images/cover.png
             -o ebook.epub
             ${{ env.FILE_LIST }}
-      - name: Upload Pull Request Asset
+
+      - name: Upload Built File
         uses: actions/upload-artifact@master
         with:
           name: ebook.epub
           path: ./ebook.epub
-      - uses: actions/download-artifact@master
-        with:
-          name: ebook.epub
-      - name: comment PR
-        uses: machine-learning-apps/pr-comment@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          path: ebook.epub
