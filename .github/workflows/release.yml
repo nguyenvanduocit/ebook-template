@@ -11,7 +11,9 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Setup Environment directory
-        run: echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+        run: |
+          echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+          echo "VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
 
       - uses: docker://pandoc/latex:latest
         with:
@@ -45,5 +47,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./ebook.epub
-          asset_name: ebook-${{ github.ref }}.epub
+          asset_name: ebook-${{ env.VERSION }}.epub
           asset_content_type: application/epub+zip
