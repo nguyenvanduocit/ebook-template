@@ -1,14 +1,20 @@
 ---
-title: My book title
-author: Daniel Herzog
-rights: MIT License
+title:
+  - type: main
+    text: My Book
+  - type: subtitle
+    text: An investigation of metadata
+description: The book description
+creator:
+  - role: author
+    text: John Smith
+  - role: editor
+    text: Sarah Jones
+  - role: Cover designer
+    text: Myself
+publisher:  Myself
+rights: No License
 lang: en-US
 tags: [pandoc, book, my-book, etc]
-abstract: |
-  Your summary.
-mainfont: DejaVu Sans
-
-# Filter preferences:
-# - pandoc-crossref
 linkReferences: true
 ---
