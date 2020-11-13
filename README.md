@@ -96,6 +96,13 @@ mkdir -p build
 pandoc --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml  --verbose --wrap=none --epub-cover-image=images/cover.png -o build/epub.epub $(printf '"%s" ' chapters/*.md)
 ```
 
+or with fishshell
+
+```sh
+mkdir -p build
+pandoc --toc --toc-depth=2 --webtex --css=style.css --metadata-file=metadata.yml  --verbose --wrap=none --epub-cover-image=images/cover.png -o build/epub.epub chapters/*.md
+```
+
 The generated file will be placed in *build/epub.epub*.
 
 ## Release
