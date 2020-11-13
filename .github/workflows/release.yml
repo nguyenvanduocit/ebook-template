@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+
       - name: Setup Environment directory
         run: echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
+
       - uses: docker://pandoc/latex:latest
         with:
           args: >-
@@ -23,6 +25,18 @@ jobs:
             --epub-cover-image=images/cover.png
             -o ebook.epub
             ${{ env.FILE_LIST }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@master
