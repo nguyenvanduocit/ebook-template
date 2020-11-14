@@ -27,9 +27,9 @@ jobs:
             ${{ env.FILE_LIST }}
 
       - name: Convert to mobi
-      run: |
-        sudo apt-get install calibre
-        ebook-convert ebook.epub ebook.mobi
+        run: |
+          sudo apt-get install calibre
+          ebook-convert ebook.epub ebook.mobi
 
       - name: Upload Built File
         uses: actions/upload-artifact@master
