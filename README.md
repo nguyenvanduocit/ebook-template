@@ -128,6 +128,17 @@ with.
 - [Pandoc Manual](http://pandoc.org/MANUAL.html)
 - [Wikipedia: Markdown](http://wikipedia.org/wiki/Markdown)
 
+## Action Secrets
+
+Setup for Google SMTP
+
+```
+MAIL_USERNAME: youremail@gmail.com
+MAIL_PASSWORD: your password or app password
+MAIL_TO: your_kindle_email@kindle,your_friend_email@example.com
+MAIL_FROM: your_verified_email@gmail.com
+```
+
 ## Contributors
 
 This project has been developed by:
