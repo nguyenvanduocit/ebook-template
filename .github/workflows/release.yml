@@ -50,9 +50,10 @@ jobs:
           asset_name: ebook-${{ env.VERSION }}.epub
           asset_content_type: application/epub+zip
 
-      - name: Rename Ebook Filename
+      - uses: docker://pandoc/latex:latest
+        name: Convert to mobi
         run: |
-          docker-apt-install calibre
+          sudo apt-install calibre
           ebook-convert ebook.epub ebook.mobi
 
       - name: Send mail
