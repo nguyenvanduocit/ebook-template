@@ -9,12 +9,16 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
-
       - name: Setup Environment directory
         run: |
           echo "FILE_LIST=$(printf '"%s" ' chapters/*.md)" >> $GITHUB_ENV
           echo "VERSION=$(echo $GITHUB_REF | cut -d / -f 3)" >> $GITHUB_ENV
-
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@master
+        with:
+          find: "vx.x.x"
+          replace: ${{ env.VERSION }}
+          include: "metadata.yml"
       - uses: docker://pandoc/latex:latest
         with:
           args: >-

@@ -1,20 +1,20 @@
 ---
 title:
   - type: main
-    text: My Book
+    text: My Reading vx.x.x
   - type: subtitle
-    text: An investigation of metadata
-description: The book description
+    text: Collection is numerous of articles from around the net.
+description: I collect these articles just to create ebook for reading on kindle. It may include many conflicting or inappropriate perspectives.
 creator:
   - role: author
-    text: John Smith
+    text: Unknown
   - role: editor
-    text: Sarah Jones
+    text: Myself
   - role: Cover designer
     text: Myself
 publisher:  Myself
 rights: No License
 lang: en-US
-tags: [pandoc, book, my-book, etc]
+tags: [pandoc, ebook]
 linkReferences: true
 ---
