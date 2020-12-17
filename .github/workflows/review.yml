@@ -28,6 +28,7 @@ jobs:
 
       - name: Convert to mobi
         run: |
+          sudo apt-get update
           sudo apt-get install calibre
           ebook-convert ebook.epub ebook.mobi
 
