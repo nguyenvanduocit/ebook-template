@@ -6,7 +6,7 @@
 
 ## Description
 
-This repository contains a simple template for building [Pandoc](http://pandoc.org/) documents;
+This repository contains a simple template for building [Pandoc](http://pandoc.org/) documents into ebook;
 Pandoc is a suite of tools to compile markdown files into EPUB file.
 
 ## Usage
