@@ -6,6 +6,8 @@ on:
       - 'v*'
 jobs:
   build:
+    env:
+      MAIL_TO: "${{ secrets.MAIL_TO }}"
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
@@ -68,7 +70,7 @@ jobs:
           asset_content_type: application/x-mobipocket-ebook
 
       - name: Send mail
-        if: ${{secrets.MAIL_TO != null}}
+        if: ${{env.MAIL_TO != ''}}
         uses: dawidd6/action-send-mail@master
         with:
           server_address: smtp.gmail.com
