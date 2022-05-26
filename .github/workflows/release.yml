@@ -68,6 +68,7 @@ jobs:
           asset_content_type: application/x-mobipocket-ebook
 
       - name: Send mail
+        if: ${{secrets.MAIL_TO != null}}
         uses: dawidd6/action-send-mail@master
         with:
           server_address: smtp.gmail.com
